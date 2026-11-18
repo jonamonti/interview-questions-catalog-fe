@@ -56,6 +56,13 @@ npm run db:seed    # optional: load dummy questions
 | `npm run lint`      | Lint with ESLint                     |
 | `npm run format`    | Format with Prettier                 |
 
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on every push to `main` and on
+every pull request: `npx prettier --check .`, lint, typecheck and build. If any
+step fails, the check on the pull request turns red. Run the same four commands
+locally before pushing.
+
 ## Editor setup
 
 The repo includes VS Code settings that format with Prettier and apply ESLint
