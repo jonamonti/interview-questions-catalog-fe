@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# Interview Questions Catalog: Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite app for browsing the interview questions catalog.
+It reads data from the [backend API](https://github.com/jonamonti/interview-questions-catalog-be).
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 22+
+- npm
+- The backend running locally (see below)
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cp .env.example .env
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+The app runs at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Environment variables
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Variable       | Default                 | Description                                     |
+| -------------- | ----------------------- | ----------------------------------------------- |
+| `VITE_API_URL` | `http://localhost:3000` | Base URL of the backend API (no trailing slash) |
 
+Vite only exposes variables that start with `VITE_` to the browser, and they end
+up in the public bundle. Never put secrets in them. The app only reads data, so
+it does not need the API key. `.env` is git-ignored; `.env.example` is the
+committed template.
+
+## Running with the backend
+
+The backend allows requests from `http://localhost:5173` by default (its
+`CORS_ORIGINS` variable). If something else is already using port 5173, Vite
+picks another port and the browser will block the API calls. Stop the other
+process, or add the new origin to `CORS_ORIGINS` in the backend `.env`.
+
+From the backend repo:
+
+```bash
+npm run db:up      # start Postgres
+npm run dev        # start the API on port 3000
+npm run db:seed    # optional: load dummy questions
+```
+
+## Scripts
+
+| Command             | What it does                         |
+| ------------------- | ------------------------------------ |
+| `npm run dev`       | Start the dev server with hot reload |
+| `npm run build`     | Type-check and build to `dist/`      |
+| `npm run preview`   | Serve the production build locally   |
+| `npm run typecheck` | Type-check without emitting files    |
+| `npm run lint`      | Lint with ESLint                     |
+| `npm run format`    | Format with Prettier                 |
+
+## Editor setup
+
+The repo includes VS Code settings that format with Prettier and apply ESLint
+fixes on save. Install the recommended extensions when VS Code offers them
+(Prettier and ESLint).
+
+## Project structure
+
+```
+src/
+  main.tsx      entry point, mounts the router
+  router.tsx    route table (React Router)
+  App.tsx       app shell, renders the matching page
+  config.ts     reads environment variables
+  pages/        one component per route
 ```
