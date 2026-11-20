@@ -5,6 +5,12 @@
   display: grid;
   grid-template-columns: 400px minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr);
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    height: auto;
+  }
 }
 
 .sidebar {
@@ -15,6 +21,9 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  @media (max-width: 900px) {
+    overflow-y: visible;
+  }
 }
 
 .panel {
@@ -23,4 +32,7 @@
   background: var(--panel);
   border-radius: 20px;
   padding: 60px clamp(24px, 5vw, 80px) 28px;
+  @media (max-width: 900px) {
+    overflow-y: visible;
+  }
 }
