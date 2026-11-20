@@ -1,0 +1,26 @@
+.shell {
+  height: 100vh;
+  padding: 8px;
+  gap: 8px;
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.sidebar {
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: none;
+  padding: 6px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.panel {
+  overflow-y: auto;
+  min-height: 0;
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 60px clamp(24px, 5vw, 80px) 28px;
+}

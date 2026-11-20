@@ -1,9 +1,11 @@
+import styles from "./HomePage.module.css";
+
 const HomePage = () => {
   return (
-    <>
-      <h1>Interview Questions Catalog</h1>
-      <p>Questions will appear here.</p>
-    </>
+    <div className={styles.shell}>
+      <aside className={styles.sidebar}></aside>
+      <main className={styles.panel}></main>
+    </div>
   );
 };
 
