@@ -13,9 +13,14 @@ body {
   line-height: 1.5;
 }
 
-button,
-input,
-select,
-textarea {
+:where(button, input, select, textarea) {
   font: inherit;
+}
+
+:where(button) {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
 }
