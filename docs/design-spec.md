@@ -11,6 +11,7 @@ The sample questions on the canvas are placeholders; the real ones come from the
 ## 1. Layout
 
 ### Desktop (wider than 900px)
+
 - The page is exactly one screen tall (`height: 100vh`), with 8px padding and an 8px gap between columns.
 - **Left column, 400px wide:** it scrolls on its own and its scrollbar is hidden. From top to bottom it holds:
   - the top row: a "Show all questions" pill and the theme switch
@@ -21,12 +22,14 @@ The sample questions on the canvas are placeholders; the real ones come from the
 - Previous / next buttons sit at the bottom of the answer panel, in two equal columns (section 4).
 
 ### Phone (900px or narrower)
+
 - One column, and the whole page scrolls.
 - **List mode** (the default) shows only the top row, header, filters and cards. The answer panel is hidden.
 - **Answer mode** opens after tapping a card. It shows the top row and header, then a "Show less" pill aligned right, then only the tapped card, then the answer panel. The filters and the other cards are hidden.
 - "Show less" goes back to list mode. Both changes use the fade in 5.3.
 
 ### All questions view
+
 - A full-width grid with a masonry layout made with CSS columns: `column-width: 300px; column-gap: 8px`.
 - The top bar holds the search ("I was asked about…"), the topic chips, a result count, the theme switch and a round close button (44px).
 - Clicking a grid card goes back to the list view and selects that question. On a phone it opens that question in answer mode.
@@ -39,27 +42,27 @@ The sample questions on the canvas are placeholders; the real ones come from the
 
 Set them as CSS custom properties on the root element and switch the whole set with the theme.
 
-| Token | Dark | Light | Used for |
-|---|---|---|---|
-| `--bg` | `#0a0a0a` | `#ffffff` | Page background |
-| `--panel` | `#151515` | `#f1f1f1` | Filter panel, answer panel |
-| `--card` | `#1e1e1e` | `#e8e8e8` | Cards, chips, pills, search, switch track |
-| `--hover` | `#282828` | `#dedede` | Hover on anything that uses `--card` |
-| `--tilebg` | `#2a2a2a` | `#0a0a0a` | Icon tiles |
-| `--ink` | `#ededed` | `#0a0a0a` | Main text, focus ring |
-| `--soft` | `#c9c9c9` | `#2b2b2b` | Answer body paragraphs |
-| `--muted` | `#9c9c9c` | `#575757` | Secondary text, card previews, counts |
-| `--acc` | `#d4ff3a` | `#d4ff3a` | The one accent (see rules below) |
-| `--code` | `#0f0f0f` | `#e8e8e8` | Code block background |
+| Token      | Dark      | Light     | Used for                                  |
+| ---------- | --------- | --------- | ----------------------------------------- |
+| `--bg`     | `#0a0a0a` | `#ffffff` | Page background                           |
+| `--panel`  | `#151515` | `#f1f1f1` | Filter panel, answer panel                |
+| `--card`   | `#1e1e1e` | `#e8e8e8` | Cards, chips, pills, search, switch track |
+| `--hover`  | `#282828` | `#dedede` | Hover on anything that uses `--card`      |
+| `--tilebg` | `#2a2a2a` | `#0a0a0a` | Icon tiles                                |
+| `--ink`    | `#ededed` | `#0a0a0a` | Main text, focus ring                     |
+| `--soft`   | `#c9c9c9` | `#2b2b2b` | Answer body paragraphs                    |
+| `--muted`  | `#9c9c9c` | `#575757` | Secondary text, card previews, counts     |
+| `--acc`    | `#d4ff3a` | `#d4ff3a` | The one accent (see rules below)          |
+| `--code`   | `#0f0f0f` | `#e8e8e8` | Code block background                     |
 
 Code highlighting:
 
-| Token | Dark | Light |
-|---|---|---|
-| keyword | `#d4ff3a` | `#4a6b00` |
+| Token          | Dark      | Light     |
+| -------------- | --------- | --------- |
+| keyword        | `#d4ff3a` | `#4a6b00` |
 | string, number | `#f0a985` | `#a8431d` |
 | function, type | `#9ccbff` | `#1d5fa8` |
-| comment | `#8a8a8a` | `#5f5f5f` |
+| comment        | `#8a8a8a` | `#5f5f5f` |
 
 **Accent rules.** Acid green is for state only. It marks the selected question card, the active topic chips, the dark-mode switch when it's on, the icons, and one of the three grid tile styles. Text on acid is always `#0a0a0a`, and secondary text on acid is `#2b2b2b`. Never use acid as text on a light background, because it fails contrast.
 
@@ -72,18 +75,18 @@ Code highlighting:
 Load from Google Fonts: **Archivo** with the width axis, and **JetBrains Mono** for code only.
 `family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500`
 
-| Role | Size / line height | Weight | Other |
-|---|---|---|---|
-| Display: header "Questions I got asked" | 76px / 0.84 | 800 | `font-stretch: 62%`, uppercase |
-| Display: answer title | `clamp(44px, 5vw, 76px)` / 0.9 | 800 | `font-stretch: 62%`, uppercase, `text-wrap: balance` |
-| Display: grid tile word | `clamp(48px, 4.4vw, 66px)` / 0.86 | 800 | `font-stretch: 62%`, uppercase |
-| Lead (short answer) | 22px / 1.42 | 450 | `text-wrap: pretty` |
-| Body | 17px / 1.62 | 400 | colour `--soft` |
-| Card title | 16px / 1.28 | 650 | |
-| Card preview | 14px / 1.4 | 400 | colour `--muted`, clamped to 2 lines |
-| UI labels (chips, pills) | 13–14px | 600 | |
-| Small caps labels (Any / All, Previous / Next) | 12px | 700 | uppercase, `letter-spacing: .04–.06em` |
-| Code | 13.5px / 1.7 | 400 | JetBrains Mono |
+| Role                                           | Size / line height                | Weight | Other                                                |
+| ---------------------------------------------- | --------------------------------- | ------ | ---------------------------------------------------- |
+| Display: header "Questions I got asked"        | 76px / 0.84                       | 800    | `font-stretch: 62%`, uppercase                       |
+| Display: answer title                          | `clamp(44px, 5vw, 76px)` / 0.9    | 800    | `font-stretch: 62%`, uppercase, `text-wrap: balance` |
+| Display: grid tile word                        | `clamp(48px, 4.4vw, 66px)` / 0.86 | 800    | `font-stretch: 62%`, uppercase                       |
+| Lead (short answer)                            | 22px / 1.42                       | 450    | `text-wrap: pretty`                                  |
+| Body                                           | 17px / 1.62                       | 400    | colour `--soft`                                      |
+| Card title                                     | 16px / 1.28                       | 650    |                                                      |
+| Card preview                                   | 14px / 1.4                        | 400    | colour `--muted`, clamped to 2 lines                 |
+| UI labels (chips, pills)                       | 13–14px                           | 600    |                                                      |
+| Small caps labels (Any / All, Previous / Next) | 12px                              | 700    | uppercase, `letter-spacing: .04–.06em`               |
+| Code                                           | 13.5px / 1.7                      | 400    | JetBrains Mono                                       |
 
 Use `font-variant-numeric: tabular-nums` everywhere, so counts don't jump around.
 
@@ -96,38 +99,45 @@ Shapes: pills and chips are fully round (`999px`), cards 18px, panels 20px, icon
 **Every button needs these states:** default, hover, `:focus-visible` (a 2px `--ink` outline, offset 2px) and, where it applies, pressed or selected. Use real `<button>` and `<a>` elements.
 
 ### Pill button
+
 - 44px tall, padding `0 18px`, background `--card`, 14px/600.
 - Hover: background `--hover`.
 - Used for "Show all questions", "Show less" (with a chevron-up icon) and "Clear filters".
 
 ### Theme switch
+
 - A `<button role="switch" aria-checked>`, 52×32px, track `--card`, white knob of 26px.
 - **On** (dark mode): the track turns `--acc`, the knob turns `#0a0a0a`, and the knob moves 20px.
 - Motion: `transform .22s cubic-bezier(.2,.8,.2,1)`.
 
 ### Search
+
 - 44px tall pill, background `--card`, no border, placeholder colour `--muted`.
 - Focus: `box-shadow: 0 0 0 2px var(--ink)`.
 - Give it a real `<label>`; it can be visually hidden.
 
 ### Topic chip
+
 - 36px tall (44px on touch screens via `@media (pointer: coarse)`), background `--card`.
 - Shows the tag name plus its count in `--muted`.
 - Active: background `--acc`, text `#0a0a0a`, and `aria-pressed="true"`.
 - The counts come from `GET /tags`.
 
 ### Difficulty chip
+
 - Three chips after the topic chips: Easy, Medium and Hard. Each shows its emote's head in a 26px round dark tile (`--tilebg`; `#0a0a0a` when active), plus the name and a count.
 - They work like topic chips: you can pick more than one, active ones are acid green, and they use `aria-pressed`.
 - **Combining filters:** a question must match one of the selected difficulties, and also the topic filter.
 - They appear in the list's filter panel and in the All questions top bar.
 
 ### Any / All toggle
+
 - A segmented control: a `--card` track with 3px padding, holding two buttons.
 - The active one has background `--ink` and text `--bg`.
 - It maps to the API's match-any / match-all filter.
 
 ### Question card (list)
+
 - A full-width `<button>`: flex row, 14px gap, 14px padding, radius 18px, background `--card`.
 - Shadow: `0 1px 0 rgba(0,0,0,.04), 0 8px 24px -12px rgba(0,0,0,.35)`.
 - Inside: the icon tile (48px), then the title and a 2-line preview of the short answer.
@@ -136,12 +146,14 @@ Shapes: pills and chips are fully round (`999px`), cards 18px, panels 20px, icon
 - Hover: background `--hover` with a fast transition (.18s). The selected state fades in slowly (.5s), see 5.3.
 
 ### Icon tile
+
 - 48×48, radius 12px, background `--tilebg`, and the icon drawn in `--acc` (`fill` or `stroke: currentColor`).
 - Brand logos are about 28–30px. They come from Simple Icons (CC0): JavaScript, React, PostgreSQL (for SQL), Node.js and Prisma.
 - Topics without a logo get a 1.7px line icon at 26px: Security (shield), API (curly braces), Networking (globe).
 - Each question shows the icon of its main tag. Store that as a tag→icon map on the frontend.
 
 ### Answer panel
+
 - From top to bottom: the title, the tag pills (30px, `--card`), the difficulty block, the short answer (lead style), the body paragraphs, then the code block.
 - **Difficulty block:** a 96×96 tile (radius 20px, `--tilebg`) holding the full emote scene at exactly 3× (`difficulty-<level>.svg`). The drawing fills the tile to its edges, with no padding. Next to it, the level name (16/650) and its line in `--muted`: Easy "Coffee's still warm", Medium "Starting to sweat", Hard "This is fine".
 - The code block has a language pill above it (`--ink` background), and the code is rendered from Markdown with syntax highlighting (INT-24).
@@ -151,16 +163,20 @@ Shapes: pills and chips are fully round (`999px`), cards 18px, panels 20px, icon
   - **Content:** a small uppercase label with an arrow ("Previous" / "Next"), then the question title.
 
 ### Grid card (All questions)
+
 - A `<button>` holding a tile (radius 18px, padding `16px 18px 18px`), with the icon tile at the top left, the difficulty emote tile at the top right (the same 42px tile as on the cards) and the big word at the bottom. On acid tiles both small tiles turn `#0a0a0a`.
 - Under it sit the full question (16/650) and its tags (13px, `--muted`).
 - The tile styles rotate in order: `--ink` background with `--bg` text, then `--acc` with dark text, then `--card` with `--ink` text.
 - Tile heights vary, and that variation is what makes the masonry work. Give each question a short "key" word for the tile, such as "Event loop", "Joins" or "useEffect".
 
 ### Empty state
+
 - When the filters match nothing, show "No match" in display type, one sentence on how to fix it, and a "Clear filters" pill.
 
 ### Loading states (INT-25)
+
 Canvas: "C · Loading". Skeletons have the same shapes as the real content, so nothing jumps when data arrives. Never use a spinner.
+
 - **Skeleton blocks:** background `--card` (or `--hover` inside a card), pulsing opacity 1 → .45 → 1 over 1.6s `ease-in-out`, infinite. No pulse with reduced motion.
 - **Chips:** 8 round bars, 36px tall, 52–90px wide.
 - **Question cards:** a real card shell holding a 48px rounded tile and 3 bars (12px, 10px, 10px tall). Show 6 of them.
@@ -170,7 +186,9 @@ Canvas: "C · Loading". Skeletons have the same shapes as the real content, so n
 - **Accessibility:** `aria-busy="true"` on the loading list.
 
 ### Error states (INT-25)
+
 Canvas: "C · Error: the list didn't load" and "C · Error: one answer, and Load more". Each error appears once, where it happened, with one way to recover.
+
 - **The list failed (initial load):**
   - In the list column, a `--panel` box (radius 18px) with an alert icon, "The questions didn't load" (16/650), "The API didn't answer. Check your connection, then try again." (`--muted`) and a "Try again" pill.
   - The topics row reads "Topics didn't load."
@@ -181,6 +199,7 @@ Canvas: "C · Error: the list didn't load" and "C · Error: one answer, and Load
 - **Accessibility:** `role="alert"` on each error.
 
 ### Pagination (INT-26)
+
 - **Page size:** 8 questions, using `GET /questions?page&limit=8`.
 - **Load more button:** at the end of the list, full width, 56px tall, radius 18px, background `--panel` (`--hover` on hover). On the left, a down-arrow icon and "Load N more", where N is the smaller of 8 and what's left. On the right, "8 of 12" in `--muted`.
 - **While loading:** the button is replaced by N skeleton cards.
@@ -192,13 +211,14 @@ Canvas: "C · Error: the list didn't load" and "C · Error: one answer, and Load
 ---
 
 ### Difficulty emotes (assets)
+
 Original pixel art: a developer with headphones and a coffee mug, on a 32×32 grid in the design's palette (`#0a0a0a`, greys, `#ededed`, and acid green for the fire). Files, in `src/assets/difficulty/`:
 
-| Level | Card / chip (head crop) | Answer panel (full scene) | Mood |
-|---|---|---|---|
-| Easy | `difficulty-easy-head.svg` | `difficulty-easy.svg` | relaxed, coffee steaming |
-| Medium | `difficulty-medium-head.svg` | `difficulty-medium.svg` | worried brows, sweat drop |
-| Hard | `difficulty-hard-head.svg` | `difficulty-hard.svg` | "this is fine", room on fire |
+| Level  | Card / chip (head crop)      | Answer panel (full scene) | Mood                         |
+| ------ | ---------------------------- | ------------------------- | ---------------------------- |
+| Easy   | `difficulty-easy-head.svg`   | `difficulty-easy.svg`     | relaxed, coffee steaming     |
+| Medium | `difficulty-medium-head.svg` | `difficulty-medium.svg`   | worried brows, sweat drop    |
+| Hard   | `difficulty-hard-head.svg`   | `difficulty-hard.svg`     | "this is fine", room on fire |
 
 - Always show them at whole-number scales: 1×, 2× or 3×. Keep `shape-rendering="crispEdges"`, so the pixels stay sharp.
 - The full scenes are shifted 2px right compared with the head crops, so the developer sits centred in the square tile.
@@ -207,6 +227,7 @@ Original pixel art: a developer with headphones and a coffee mug, on a 32×32 gr
 ## 5. Motion
 
 ### 5.1 The card pile (scroll-driven, like portorocha.com)
+
 Cards that reach the bottom edge of the list shrink and stack up instead of being cut off.
 
 - **The scroller:** on desktop it's the left column. On a phone it's the window. Whichever one scrolls sets the bottom edge.
@@ -226,13 +247,16 @@ Cards that reach the bottom edge of the list shrink and stack up instead of bein
 - **Keep cards fully opaque.** Never fade a whole card, or the text of the cards behind shows through.
 
 ### 5.2 Hover on grid cards
+
 - The tile rises 5px and gains a shadow `0 22px 40px -22px rgba(0,0,0,.55)`. The icon tile rises another 2px.
 - Both use `.6s cubic-bezier(.22,1,.36,1)`.
 - The title gets an underline that draws in: a `linear-gradient` background on an inline span. Its `background-size` goes from `0% 1px` to `100% 1px` and its `background-position` from right to left, over `.5s` on the same curve. Add `box-decoration-break: clone` so it works on two-line titles.
 - Apply the same effect on `:focus-visible`.
 
 ### 5.3 Content changes (fade out, swap, fade in)
+
 This is the reference's page transition, and it is opacity only.
+
 - **Selecting a question on desktop:** the selected card highlight changes immediately and fades over .5s. The answer panel fades out over .4s, the content swaps, the panel scrolls to the top, and it fades in over .5s with `ease`.
 - **List ↔ All questions:** the whole page fades the same way.
 - **Phone, list ↔ answer mode:** everything under the header fades the same way and the window scrolls to the top. The header stays visible.
@@ -243,6 +267,7 @@ This is the reference's page transition, and it is opacity only.
 ---
 
 ## 6. Details that are easy to forget
+
 - Theme the parts browsers draw: `::selection` (acid background, dark text), `caret-color`, thin scrollbars on the answer panel, and the focus ring.
 - **CSS resets:** when you reset buttons (`background: none; border: 0`), wrap the selector in `:where(...)`. Otherwise the reset outranks your component classes and wipes their backgrounds. This exact bug made the pile's cards see-through during the design.
 - Tap targets are 44px on touch screens.
@@ -252,27 +277,28 @@ This is the reference's page transition, and it is opacity only.
 
 ## 7. Where each part goes (Linear)
 
-| Ticket | Part of this spec |
-|---|---|
-| INT-27 Responsive layout and base styling | 1, 2, 3, the switch, section 6 |
-| INT-21 API client and TanStack Query | `GET /questions` with tags and match, `GET /tags` for chip counts |
-| INT-22 Question list page | Question card, icon tile, 5.1 card pile |
-| INT-23 Tag filter chips synced with the URL | Search, chips, Any/All (keep the selected tags and match mode in the URL) |
-| INT-24 Question detail with Markdown + syntax highlighting | Answer panel, code tokens, 5.3 |
-| INT-25 Loading, error and empty states | Empty state, loading states, error states |
-| INT-26 Pagination UI | Pagination |
-| INT-39 Card pile on the question list | 5.1 |
-| INT-40 Fade transitions between questions and views | 5.3 |
-| INT-41 All questions view (masonry grid) | 1 (All questions view), Grid card, 5.2 |
-| INT-42 Phone answer mode with "Show less" | 1 (Phone), 5.3 |
-| INT-43 Theme switch with saved preference | Theme switch |
-| INT-37 Text search on GET /questions (backend) | 8 (Search) |
-| INT-38 Optional short label on Question (backend) | 8 (Grid tile word) |
-| INT-44 Difficulty filter on GET /questions (backend) | 8 (Difficulty), Difficulty chip |
+| Ticket                                                     | Part of this spec                                                         |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------- |
+| INT-27 Responsive layout and base styling                  | 1, 2, 3, the switch, section 6                                            |
+| INT-21 API client and TanStack Query                       | `GET /questions` with tags and match, `GET /tags` for chip counts         |
+| INT-22 Question list page                                  | Question card, icon tile, 5.1 card pile                                   |
+| INT-23 Tag filter chips synced with the URL                | Search, chips, Any/All (keep the selected tags and match mode in the URL) |
+| INT-24 Question detail with Markdown + syntax highlighting | Answer panel, code tokens, 5.3                                            |
+| INT-25 Loading, error and empty states                     | Empty state, loading states, error states                                 |
+| INT-26 Pagination UI                                       | Pagination                                                                |
+| INT-39 Card pile on the question list                      | 5.1                                                                       |
+| INT-40 Fade transitions between questions and views        | 5.3                                                                       |
+| INT-41 All questions view (masonry grid)                   | 1 (All questions view), Grid card, 5.2                                    |
+| INT-42 Phone answer mode with "Show less"                  | 1 (Phone), 5.3                                                            |
+| INT-43 Theme switch with saved preference                  | Theme switch                                                              |
+| INT-37 Text search on GET /questions (backend)             | 8 (Search)                                                                |
+| INT-38 Optional short label on Question (backend)          | 8 (Grid tile word)                                                        |
+| INT-44 Difficulty filter on GET /questions (backend)       | 8 (Difficulty), Difficulty chip                                           |
 
 ---
 
 ## 8. Data the design needs from the API
+
 - **Short answer (the lead paragraph and card preview):** the first paragraph of the Markdown `answer`. The rest of the answer is the body. Work this out on the frontend; no schema change is needed.
 - **Grid tile word:** a new optional `label` on `Question`, at most about 20 characters ("Event loop", "Joins"). When it's missing, fall back to the main tag's name.
 - **Search:** a new `q` parameter on `GET /questions` that searches the title and answer and works together with tags, match mode and pagination.
