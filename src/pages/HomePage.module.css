@@ -32,6 +32,8 @@
   background: var(--panel);
   border-radius: 20px;
   padding: 60px clamp(24px, 5vw, 80px) 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hover) transparent;
   @media (max-width: 900px) {
     overflow-y: visible;
   }
