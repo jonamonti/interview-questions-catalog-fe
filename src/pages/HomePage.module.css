@@ -1,0 +1,40 @@
+.shell {
+  height: 100vh;
+  padding: 8px;
+  gap: 8px;
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    height: auto;
+  }
+}
+
+.sidebar {
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: none;
+  padding: 6px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    overflow-y: visible;
+  }
+}
+
+.panel {
+  overflow-y: auto;
+  min-height: 0;
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 60px clamp(24px, 5vw, 80px) 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hover) transparent;
+  @media (max-width: 900px) {
+    overflow-y: visible;
+  }
+}

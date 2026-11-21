@@ -1,0 +1,33 @@
+.search {
+  padding: 0 18px;
+  width: 100%;
+  height: 44px;
+  background: var(--card);
+  border: 0px;
+  border-radius: 999px;
+  color: var(--ink);
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+  &::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+}
+
+.label {
+  display: block;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
