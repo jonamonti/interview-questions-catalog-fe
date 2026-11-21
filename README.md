@@ -77,5 +77,19 @@ src/
   router.tsx    route table (React Router)
   App.tsx       app shell, renders the matching page
   config.ts     reads environment variables
-  pages/        one component per route
+  pages/        one component per route, each with its CSS Module
+  components/   shared components, one folder each (component + CSS Module)
+  styles/       global CSS: tokens.css (colours, fonts) and base.css (reset)
 ```
+
+## Styling
+
+Styling is plain CSS plus CSS Modules, following `docs/design-spec.md`.
+
+- **`src/styles/tokens.css`:** the design tokens as CSS custom properties. Dark
+  is the default; the light values apply under `:root[data-theme="light"]`.
+  Components use `var(--...)`, never hex values.
+- **`src/styles/base.css`:** the reset, body styles, the global focus ring,
+  themed selection and caret, and the `prefers-reduced-motion` rule.
+- **`*.module.css`:** styles for one component, next to its `.tsx`. Class names
+  are scoped to the component.

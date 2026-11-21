@@ -53,6 +53,7 @@ Set them as CSS custom properties on the root element and switch the whole set w
 | `--soft`   | `#c9c9c9` | `#2b2b2b` | Answer body paragraphs                    |
 | `--muted`  | `#9c9c9c` | `#575757` | Secondary text, card previews, counts     |
 | `--acc`    | `#d4ff3a` | `#d4ff3a` | The one accent (see rules below)          |
+| `--on-acc` | `#0a0a0a` | `#0a0a0a` | Text and dark tiles on `--acc`            |
 | `--code`   | `#0f0f0f` | `#e8e8e8` | Code block background                     |
 
 Code highlighting:
@@ -64,7 +65,7 @@ Code highlighting:
 | function, type | `#9ccbff` | `#1d5fa8` |
 | comment        | `#8a8a8a` | `#5f5f5f` |
 
-**Accent rules.** Acid green is for state only. It marks the selected question card, the active topic chips, the dark-mode switch when it's on, the icons, and one of the three grid tile styles. Text on acid is always `#0a0a0a`, and secondary text on acid is `#2b2b2b`. Never use acid as text on a light background, because it fails contrast.
+**Accent rules.** Acid green is for state only. It marks the selected question card, the active topic chips, the dark-mode switch when it's on, the icons, and one of the three grid tile styles. Text on acid is always `#0a0a0a` (the `--on-acc` token), and secondary text on acid is `#2b2b2b`. Never use acid as text on a light background, because it fails contrast.
 
 **No other colours.** Don't add violet or any other hues.
 
