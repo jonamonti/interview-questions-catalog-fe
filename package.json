@@ -12,6 +12,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.108.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router": "^7.18.6"
