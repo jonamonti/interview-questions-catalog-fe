@@ -1,0 +1,14 @@
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 11px;
+  background: var(--tilebg);
+  overflow: hidden;
+}
+
+.img {
+  image-rendering: pixelated;
+}
