@@ -60,3 +60,12 @@
   color: var(--muted);
   font-size: 15px;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+  list-style: none;
+}

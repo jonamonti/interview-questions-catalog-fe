@@ -6,7 +6,7 @@ import styles from "./QuestionCard.module.css";
 type Props = {
   question: Question;
   isSelected: boolean;
-  onSelect: () => void;
+  onSelect: (id: number) => void;
 };
 
 const QuestionCard = (props: Props) => {
@@ -15,7 +15,7 @@ const QuestionCard = (props: Props) => {
       type="button"
       aria-current={props.isSelected ? "true" : undefined}
       className={styles.button}
-      onClick={props.onSelect}
+      onClick={() => props.onSelect(props.question.id)}
     >
       <TopicIcon tags={props.question.tags} className={styles.topicIcon} />
       <span className={styles.textColumn}>

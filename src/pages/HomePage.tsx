@@ -1,3 +1,5 @@
+import { useState } from "react";
+import QuestionCard from "../components/QuestionCard/QuestionCard";
 import useQuestions from "../hooks/useQuestions";
 import useTags from "../hooks/useTags";
 import styles from "./HomePage.module.css";
@@ -5,6 +7,10 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   const questions = useQuestions({});
   const tags = useTags();
+  const [selected, setSelected] = useState<number | null>(null);
+  const handleSelect = (id: number) => {
+    setSelected(id);
+  };
 
   return (
     <div className={styles.shell}>
@@ -24,6 +30,20 @@ const HomePage = () => {
             <p className={styles.statusLine}>Loading questions…</p>
           )}
         </header>
+        <ul className={styles.list}>
+          {questions.data &&
+            questions.data.questions.map((question) => {
+              return (
+                <li key={question.id}>
+                  <QuestionCard
+                    question={question}
+                    isSelected={selected === question.id}
+                    onSelect={handleSelect}
+                  />
+                </li>
+              );
+            })}
+        </ul>
       </aside>
       <main className={styles.panel}></main>
     </div>
