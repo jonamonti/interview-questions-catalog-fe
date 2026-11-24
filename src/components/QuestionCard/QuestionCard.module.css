@@ -1,0 +1,68 @@
+.button {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  padding: 14px;
+  padding-right: 64px;
+  border-radius: 18px;
+  gap: 14px;
+  background: var(--card);
+  text-align: left;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.04),
+    0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+}
+
+.button:hover {
+  background: var(--hover);
+  transition-duration: 0.18s;
+}
+
+.button[aria-current="true"] {
+  background: var(--acc);
+  color: var(--on-acc);
+}
+
+.button[aria-current="true"] .preview {
+  color: var(--on-acc-soft);
+}
+
+.button[aria-current="true"] .topicIcon,
+.button[aria-current="true"] .difficulty {
+  background: var(--on-acc);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.28;
+  text-wrap: pretty;
+}
+
+.preview {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--muted);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.difficulty {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+}
