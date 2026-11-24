@@ -38,3 +38,34 @@
     overflow-y: visible;
   }
 }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 76px;
+  font-weight: 800;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  line-height: 0.84;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+.statusLine {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+  list-style: none;
+}

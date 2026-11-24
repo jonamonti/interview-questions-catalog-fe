@@ -12,9 +12,11 @@ export type TagWithCount = Tag & {
 export type Question = {
   id: number;
   title: string;
+  answer: string;
+  // Plain text made from lead, for list cards
+  preview: string;
   // Markdown. `lead` is the first paragraph of `answer` and `body` is the rest
   // (empty for a single paragraph); the API computes both.
-  answer: string;
   lead: string;
   body: string;
   difficulty: Difficulty;

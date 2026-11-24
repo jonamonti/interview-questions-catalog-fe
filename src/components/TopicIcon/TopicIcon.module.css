@@ -1,0 +1,16 @@
+.icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 12px;
+  background: var(--tilebg);
+  color: var(--acc);
+  overflow: hidden;
+}
+
+.svg {
+  display: block;
+}
