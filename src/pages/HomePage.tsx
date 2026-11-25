@@ -1,15 +1,18 @@
-import { useState } from "react";
 import QuestionCard from "../components/QuestionCard/QuestionCard";
 import useQuestions from "../hooks/useQuestions";
 import useTags from "../hooks/useTags";
 import styles from "./HomePage.module.css";
+import useSelectedQuestionId from "../hooks/useSelectedQuestionId";
+import { Outlet, useNavigate } from "react-router";
 
 const HomePage = () => {
   const questions = useQuestions({});
   const tags = useTags();
-  const [selected, setSelected] = useState<number | null>(null);
+  const selectedId = useSelectedQuestionId();
+  const navigate = useNavigate();
+
   const handleSelect = (id: number) => {
-    setSelected(id);
+    navigate(`/questions/${id}`);
   };
 
   return (
@@ -37,7 +40,7 @@ const HomePage = () => {
                 <li key={question.id}>
                   <QuestionCard
                     question={question}
-                    isSelected={selected === question.id}
+                    isSelected={selectedId === question.id}
                     onSelect={handleSelect}
                   />
                 </li>
@@ -45,7 +48,9 @@ const HomePage = () => {
             })}
         </ul>
       </aside>
-      <main className={styles.panel}></main>
+      <main className={styles.panel} aria-live="polite">
+        <Outlet />
+      </main>
     </div>
   );
 };
