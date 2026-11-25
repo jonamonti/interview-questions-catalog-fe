@@ -4,11 +4,16 @@ import PanelMessage from "../components/PanelMessage/PanelMessage";
 import useQuestion from "../hooks/useQuestion";
 import useSelectedQuestionId from "../hooks/useSelectedQuestionId";
 import QuestionHeader from "../components/QuestionHeader/QuestionHeader";
+import MarkdownContent from "../components/MarkdownContent/MarkdownContent";
+import QuestionNav from "../components/QuestionNav/QuestionNav";
+import useQuestionNeighbours from "../hooks/useQuestionNeighbours";
+import styles from "./QuestionDetail.module.css";
 
 const QuestionDetail = () => {
   const id = useSelectedQuestionId();
   const question = useQuestion(id);
   const navigate = useNavigate();
+  const { previous, next } = useQuestionNeighbours(id);
   const isNotFound =
     id === undefined ||
     (question.error instanceof ApiError && question.error.isNotFound);
@@ -24,10 +29,14 @@ const QuestionDetail = () => {
     );
   if (question.data)
     return (
-      <>
+      <article className={styles.article}>
         <QuestionHeader question={question.data} />
-        <p>{question.data.lead}</p>
-      </>
+        <p className={styles.lead}>{question.data.lead}</p>
+        {question.data.body && (
+          <MarkdownContent markdown={question.data.body} />
+        )}
+        {(previous || next) && <QuestionNav previous={previous} next={next} />}
+      </article>
     );
   if (question.isError)
     return (

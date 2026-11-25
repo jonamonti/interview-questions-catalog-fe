@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import QuestionCard from "../components/QuestionCard/QuestionCard";
 import useQuestions from "../hooks/useQuestions";
 import useTags from "../hooks/useTags";
@@ -10,6 +11,13 @@ const HomePage = () => {
   const tags = useTags();
   const selectedId = useSelectedQuestionId();
   const navigate = useNavigate();
+
+  // The panel keeps its scroll position when the route changes, so a click on
+  // "Next" at the bottom of one answer would open the next one at the bottom.
+  const panelRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    panelRef.current?.scrollTo({ top: 0 });
+  }, [selectedId]);
 
   const handleSelect = (id: number) => {
     navigate(`/questions/${id}`);
@@ -48,7 +56,7 @@ const HomePage = () => {
             })}
         </ul>
       </aside>
-      <main className={styles.panel} aria-live="polite">
+      <main ref={panelRef} className={styles.panel} aria-live="polite">
         <Outlet />
       </main>
     </div>

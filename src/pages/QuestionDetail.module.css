@@ -1,0 +1,13 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  max-width: 72ch;
+  gap: 30px;
+}
+
+.lead {
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 1.42;
+  text-wrap: pretty;
+}
