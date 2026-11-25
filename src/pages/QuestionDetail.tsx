@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import ApiError from "../api/api-error";
 import PanelMessage from "../components/PanelMessage/PanelMessage";
 import useQuestion from "../hooks/useQuestion";
@@ -13,6 +13,7 @@ const QuestionDetail = () => {
   const id = useSelectedQuestionId();
   const question = useQuestion(id);
   const navigate = useNavigate();
+  const { search } = useLocation();
   const { previous, next } = useQuestionNeighbours(id);
   const isNotFound =
     id === undefined ||
@@ -24,7 +25,7 @@ const QuestionDetail = () => {
         title="This question doesn't exist"
         text="It may have been removed, or the link is wrong."
         actionLabel="See all questions"
-        onAction={() => navigate("/")}
+        onAction={() => navigate({ pathname: "/", search })}
       />
     );
   if (question.data)

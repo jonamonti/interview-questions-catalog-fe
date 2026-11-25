@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { keepPreviousData, useInfiniteQuery } from "@tanstack/react-query";
 import type { QuestionFilters } from "../api/types";
 import { queryKeys } from "../api/query-keys";
 import { getQuestions } from "../api/questions";
@@ -10,6 +10,9 @@ const useQuestions = (filters: QuestionFilters) => {
     queryKey: queryKeys.questions.list(filters),
     queryFn: ({ pageParam }) =>
       getQuestions({ ...filters, page: pageParam, limit: PAGE_SIZE }),
+    // While a new filter loads, keep showing the previous list instead of
+    // emptying it (`isPlaceholderData` is true during that time).
+    placeholderData: keepPreviousData,
     initialPageParam: 1,
     getNextPageParam: (lastPage) =>
       lastPage.pagination.page < lastPage.pagination.totalPages

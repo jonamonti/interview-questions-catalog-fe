@@ -1,0 +1,41 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background 0.16s ease-out,
+    color 0.16s ease-out;
+}
+
+.chip:hover {
+  background: var(--hover);
+}
+
+.active {
+  background: var(--acc);
+  color: var(--on-acc);
+}
+
+.active:hover {
+  background: var(--acc);
+}
+.count {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.active .count {
+  color: var(--on-acc-soft);
+}
+
+@media (pointer: coarse) {
+  .chip {
+    min-height: 44px;
+  }
+}
