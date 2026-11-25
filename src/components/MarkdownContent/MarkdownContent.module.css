@@ -1,0 +1,160 @@
+.markdown {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0;
+}
+
+.markdown p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--soft);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+  line-height: 1.25;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.markdown h1,
+.markdown h2 {
+  font-size: 20px;
+}
+
+.markdown h3,
+.markdown h4 {
+  font-size: 17px;
+}
+
+.markdown pre {
+  margin: 0;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: var(--code);
+  overflow-x: auto;
+}
+
+.markdown pre code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* Inside .markdown pre, don't rename any element with the real class hljs-keyword. */
+.markdown pre :global(.hljs-keyword),
+.markdown pre :global(.hljs-built_in),
+.markdown pre :global(.hljs-literal) {
+  color: var(--syntax-keyword);
+}
+
+/* strings */
+.markdown pre :global(.hljs-string),
+.markdown pre :global(.hljs-number),
+.markdown pre :global(.hljs-regexp) {
+  color: var(--syntax-string);
+}
+
+/* function names, attributes, variables */
+.markdown pre :global(.hljs-title),
+.markdown pre :global(.hljs-attr),
+.markdown pre :global(.hljs-variable) {
+  color: var(--syntax-function);
+}
+
+/* comments */
+.markdown pre :global(.hljs-comment) {
+  color: var(--syntax-comment);
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--soft);
+  overflow-wrap: anywhere;
+}
+
+.markdown li::marker {
+  color: var(--muted);
+}
+
+.markdown a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.markdown a:hover {
+  text-decoration-color: var(--ink);
+}
+
+.markdown :not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--card);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.88em;
+  color: var(--ink);
+}
+
+.markdown table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.markdown th,
+.markdown td {
+  padding: 8px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--card);
+  color: var(--soft);
+  overflow-wrap: anywhere;
+}
+
+.markdown th {
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+  line-height: 1.25;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.markdown h1,
+.markdown h2 {
+  font-size: 20px;
+}
+
+.markdown h3,
+.markdown h4 {
+  font-size: 17px;
+}

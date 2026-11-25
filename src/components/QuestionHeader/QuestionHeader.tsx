@@ -1,9 +1,15 @@
-import type { Question } from "../../api/types";
+import type { Difficulty, Question } from "../../api/types";
 import DifficultyEmote from "../DifficultyEmote/DifficultyEmote";
 import styles from "./QuestionHeader.module.css";
 
 type Props = {
   question: Question;
+};
+
+const difficultyLines: Record<Difficulty, string> = {
+  easy: "Coffee's still warm",
+  medium: "Starting to sweat",
+  hard: "This is fine",
 };
 
 const QuestionHeader = (props: Props) => {
@@ -23,7 +29,12 @@ const QuestionHeader = (props: Props) => {
           size="large"
           className={styles.emote}
         />
-        <p className={styles.difficulty}>{props.question.difficulty}</p>
+        <div className={styles.difficultyText}>
+          <p className={styles.difficulty}>{props.question.difficulty}</p>
+          <p className={styles.difficultyLine}>
+            {difficultyLines[props.question.difficulty]}
+          </p>
+        </div>
       </div>
     </header>
   );

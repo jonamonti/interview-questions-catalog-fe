@@ -48,6 +48,21 @@
   flex: none;
 }
 
+.difficultyText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .difficulty {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
   text-transform: capitalize;
+}
+
+.difficultyLine {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
 }

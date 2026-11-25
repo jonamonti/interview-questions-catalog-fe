@@ -1,0 +1,69 @@
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  @media (max-width: 520px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.link {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The box is a separate layer so only the background fades; the text doesn't. */
+.link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 16px;
+  background: var(--card);
+  transition: background 0.18s ease;
+}
+
+.link:hover::before {
+  background: var(--hover);
+}
+
+.previous {
+  grid-column: 1;
+  &::before {
+    mask-image: linear-gradient(to right, #000, transparent);
+  }
+}
+
+.next {
+  grid-column: 2;
+  align-items: flex-end;
+  text-align: right;
+  &::before {
+    mask-image: linear-gradient(to left, #000, transparent);
+  }
+  @media (max-width: 520px) {
+    grid-column: 1;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.28;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
