@@ -48,7 +48,7 @@ const HomePage = () => {
             })}
         </ul>
       </aside>
-      <main className={styles.panel}>
+      <main className={styles.panel} aria-live="polite">
         <Outlet />
       </main>
     </div>

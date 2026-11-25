@@ -27,6 +27,8 @@
 }
 
 .panel {
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   min-height: 0;
   background: var(--panel);
