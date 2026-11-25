@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import type { Question } from "../../api/types";
 import styles from "./QuestionNav.module.css";
 
@@ -8,11 +8,12 @@ type Props = {
 };
 
 const QuestionNav = (props: Props) => {
+  const { search } = useLocation();
   return (
     <nav className={styles.nav} aria-label="Other questions">
       {props.previous && (
         <Link
-          to={`/questions/${props.previous.id}`}
+          to={{ pathname: `/questions/${props.previous.id}`, search }}
           className={[styles.link, styles.previous].join(" ")}
         >
           <span className={styles.label}>
@@ -23,7 +24,7 @@ const QuestionNav = (props: Props) => {
       )}
       {props.next && (
         <Link
-          to={`/questions/${props.next.id}`}
+          to={{ pathname: `/questions/${props.next.id}`, search }}
           className={[styles.link, styles.next].join(" ")}
         >
           <span className={styles.label}>

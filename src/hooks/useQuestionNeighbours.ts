@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import useQuestions from "./useQuestions";
+import useQuestionFilters from "./useQuestionFilters";
 
 // The questions before and after `id` in the list the user is browsing.
 // It reads the same query as the sidebar, so it makes no extra request, except
 // to load the next page when `id` is the last loaded question.
 const useQuestionNeighbours = (id: number | undefined) => {
-  const questions = useQuestions({});
+  const { filters } = useQuestionFilters();
+  const questions = useQuestions(filters);
   const list = questions.data?.questions ?? [];
   const index = id === undefined ? -1 : list.findIndex((q) => q.id === id);
 
